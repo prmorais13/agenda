@@ -1,4 +1,4 @@
-var appAgenda = angular.module('appAgenda', []);
+var appAgenda = angular.module('appAgenda', ["ngMessages"]);
 
 appAgenda.controller("contatoController", function($scope, $filter, $http) {
 	$scope.app = "Lista Telefônica";
