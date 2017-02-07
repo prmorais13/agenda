@@ -2,6 +2,7 @@ package br.com.agenda.controller;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,7 +26,7 @@ public class ContatoController implements Serializable{
  
 	private Contato cadastrar(Contato contato) {
 		contato.setId(proximoId);
-		
+		contato.setData(new Date());
 		this.contatos.put(contato.getId(), contato);
 		
 		proximoId++;

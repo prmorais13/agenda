@@ -1,11 +1,13 @@
 package br.com.agenda.model;
 
+import java.util.Date;
 
 public class Contato {
 
 	private Integer id;
 	private String nome;
 	private String telefone;
+	private Date data;
 
 	public Integer getId() {
 		return id;
@@ -29,6 +31,14 @@ public class Contato {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
 	}
 
 }
