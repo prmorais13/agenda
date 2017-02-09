@@ -38,19 +38,19 @@
 		</table>
 		<hr/>
 
-		<form name="contatoForm">
+		<form name="contatoForm" novalidate="novalidate" >
 			<input class="form-control" type="text" ng-model="contato.nome" name="nome" placeholder="Nome"
-					ng-required="true" ng-minlength="10" />
+					required="required" ng-minlength="10"  />
 			<input class="form-control" type="text" ng-model="contato.telefone" name="telefone" placeholder="Telefone"
 					ng-required="true" ng-pattern="/^\d{5,6}-\d{4}$/" />
 			<select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome + '( ' + (operadora.preco | currency) + ' )'
-					group by operadora.categoria for operadora in operadoras | orderBy:'nome'">
+					group by operadora.categoria for operadora in operadoras | orderBy:'nome'" >
 				<option value="">Selecione uma operadora</option>
 			</select>
 		</form>
 
-		<div ng-messages="contatoForm.nome.$error" class="alert alert-danger" >
-			<div ng-message="required" >
+		<div ng-messages="contatoForm.nome.$error" class="alert alert-danger" ng-show="!contatoForm.nome.$pristine" >
+			<div ng-message="required">
 				O nome deve ser informado!
 			</div>
 			<div ng-message="minlength">
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 
-		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.required">
+		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.required&&contatoForm.telefone.$dirty">
 			O telefone deve ser informado!
 		</div>
 		<div class="alert alert-danger" ng-show="contatoForm.telefone.$error.pattern">
